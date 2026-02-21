@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rivergate Venture Capital</title>
+  <meta name="description" content="Rivergate is a growth equity fund partnering with fast-growing technology businesses through its broad network of strategic, Fortune 1000 LPs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #0a1628;
+      --navy-light: #132038;
+      --slate: #1e3050;
+      --accent: #4a8fe7;
+      --accent-light: #6ba5ed;
+      --gold: #c9a84c;
+      --white: #ffffff;
+      --gray-100: #f0f2f5;
+      --gray-200: #d8dde6;
+      --gray-400: #8e99a9;
+      --gray-600: #5a6577;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--white);
+      background: var(--navy);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 22, 40, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(74, 143, 231, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 100px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 strong {
+      font-weight: 600;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--gray-400);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+
+    .hero-cta:hover {
+      gap: 0.75rem;
+    }
+
+    .hero-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title strong {
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-400);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    /* STRATEGY */
+    #strategy {
+      background: var(--navy-light);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .strategy-card {
+      padding: 2.5rem 2rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .strategy-card:hover {
+      border-color: rgba(201, 168, 76, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .strategy-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(74, 143, 231, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .strategy-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    .strategy-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .strategy-card p {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      line-height: 1.65;
+    }
+
+    /* TRACK RECORD */
+    .track-intro {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .track-intro .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .track-intro .divider {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .track-section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .track-group {
+      margin-bottom: 3rem;
+    }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .track-item {
+      padding: 1.25rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+
+    .track-item:hover {
+      border-color: rgba(201, 168, 76, 0.2);
+    }
+
+    .track-item .company {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .track-item .outcome {
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .track-item .outcome.private {
+      color: var(--gray-400);
+    }
+
+    /* TEAM */
+    #team {
+      background: var(--navy-light);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    .team-card {
+      padding: 2.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+
+    .team-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--slate), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .team-role {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .team-bio {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      line-height: 1.75;
+    }
+
+    .team-bio strong {
+      color: var(--gray-200);
+      font-weight: 500;
+    }
+
+    .team-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .team-highlights span {
+      font-size: 0.72rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      background: rgba(74, 143, 231, 0.1);
+      color: var(--accent-light);
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    #contact {
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+
+    #contact .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #contact .divider {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      padding: 0.9rem 2rem;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 100px;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+    }
+
+    .contact-link:hover {
+      background: rgba(201, 168, 76, 0.08);
+      border-color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(10, 22, 40, 0.97);
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .strategy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .track-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .track-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo">Rivergate<span>VC</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">Growth Equity</div>
+      <h1>Partnering with <strong>fast-growing technology</strong> businesses</h1>
+      <p>Rivergate Venture Capital is a growth equity fund that leverages its broad network of strategic, Fortune 1000 LPs to accelerate exceptional companies.</p>
+      <a href="#strategy" class="hero-cta">
+        Learn more
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section id="strategy">
+    <div class="container">
+      <div class="section-label">Strategy</div>
+      <h2 class="section-title">How we <strong>invest</strong></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">We combine flexible capital with deep operational expertise and a network of Fortune 1000 strategic LPs to drive outsized outcomes.</p>
+      <div class="strategy-grid">
+        <div class="strategy-card fade-in">
+          <div class="strategy-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Flexible Capital Deployment</h3>
+          <p>Tailored investment structures through our fund and SPVs, designed to meet the unique needs of each growth-stage company.</p>
+        </div>
+        <div class="strategy-card fade-in">
+          <div class="strategy-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+          </div>
+          <h3>High-Touch LP Engagement</h3>
+          <p>Our strategic Fortune 1000 LPs actively contribute to portfolio company growth through partnerships, distribution, and industry expertise.</p>
+        </div>
+        <div class="strategy-card fade-in">
+          <div class="strategy-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605"/></svg>
+          </div>
+          <h3>Undersized Fund + SPVs</h3>
+          <p>A deliberately concentrated approach that ensures deep partnership with each portfolio company and meaningful alignment of interests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <div class="track-intro">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Select <strong>track record</strong></h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">A history of identifying and partnering with category-defining technology companies across stages and sectors.</p>
+      </div>
+
+      <div class="track-group fade-in">
+        <div class="track-section-label">Public Exits</div>
+        <div class="track-grid">
+          <div class="track-item">
+            <div class="company">Veeva Systems</div>
+            <div class="outcome">IPO</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Mindbody</div>
+            <div class="outcome">IPO</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Compass</div>
+            <div class="outcome">IPO</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Marketo</div>
+            <div class="outcome">IPO</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Bazaarvoice</div>
+            <div class="outcome">IPO</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-group fade-in">
+        <div class="track-section-label">Acquisitions</div>
+        <div class="track-grid">
+          <div class="track-item">
+            <div class="company">Refinery29</div>
+            <div class="outcome">Acquired by Vice Media</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Spredfast</div>
+            <div class="outcome">Acquired by Vista Equity</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Kapost</div>
+            <div class="outcome">Acquired by Upland Software</div>
+          </div>
+          <div class="track-item">
+            <div class="company">data.world</div>
+            <div class="outcome">Acquired by ServiceNow</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-group fade-in">
+        <div class="track-section-label">Current Portfolio</div>
+        <div class="track-grid">
+          <div class="track-item">
+            <div class="company">Jobber</div>
+            <div class="outcome private">Private</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Cents</div>
+            <div class="outcome private">Private</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Vortexa</div>
+            <div class="outcome private">Private</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Semperis</div>
+            <div class="outcome private">Private</div>
+          </div>
+          <div class="track-item">
+            <div class="company">Odeko</div>
+            <div class="outcome private">Private</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <div class="section-label">Team</div>
+      <h2 class="section-title">Managing <strong>Partners</strong></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Operators and investors with decades of experience building and scaling technology businesses.</p>
+
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <div class="team-header">
+            <div class="team-avatar">MS</div>
+            <div>
+              <div class="team-name">Matthew Schneider</div>
+              <div class="team-role">Managing Partner</div>
+            </div>
+          </div>
+          <p class="team-bio">
+            Founding Partner at Tech Pioneers Fund. Led investments in <strong>Cents, Compass, data.world, Jobber, Odeko, Semperis,</strong> and <strong>Vortexa</strong>. Founding team member and associate at Lead Edge Capital, where he led investments in Alignable, Kapost, Mindbody, Spredfast, and Veeva Systems.
+          </p>
+          <p class="team-bio" style="margin-top: 0.75rem;">
+            Deal team for <strong>Alibaba Group, Bazaarvoice, Marketo, Procore, Refinery29, Xamarin,</strong> and more. Operating experience as Founder & COO of Honeycommb and Head of Business Development at Alignable. Research analyst for Eastern Advisors at Tiger Management, specializing in software and internet companies.
+          </p>
+          <div class="team-highlights">
+            <span>Lead Edge Capital</span>
+            <span>Tiger Management</span>
+            <span>Tech Pioneers Fund</span>
+          </div>
+        </div>
+
+        <div class="team-card fade-in">
+          <div class="team-header">
+            <div class="team-avatar">BR</div>
+            <div>
+              <div class="team-name">Brian Rainey</div>
+              <div class="team-role">Managing Partner</div>
+            </div>
+          </div>
+          <p class="team-bio">
+            An operating executive and investor with a proven record of building, scaling, and exiting technology-enabled businesses. Brian has spent the last 15 years leading venture-backed startups as CFO and CEO, most recently <strong>Gooten</strong>, a global manufacturing technology platform, through its sale to Taylor Corporation in 2025.
+          </p>
+          <p class="team-bio" style="margin-top: 0.75rem;">
+            A CPA in Virginia, he brings institutional finance experience from <strong>Deloitte</strong> and <strong>Deutsche Bank</strong>. Brian focuses on advising mid-market companies on value creation, technology integration, and capital strategy, while serving as an LP and advisor to early-stage companies and funds across consumer, fintech, and B2B services.
+          </p>
+          <div class="team-highlights">
+            <span>Gooten (CEO)</span>
+            <span>Deloitte</span>
+            <span>Deutsche Bank</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's <strong>connect</strong></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">We're always looking to meet exceptional founders building category-defining technology companies.</p>
+      <a href="mailto:info@rivergatevc.com" class="contact-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        info@rivergatevc.com
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Rivergate Venture Capital. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
